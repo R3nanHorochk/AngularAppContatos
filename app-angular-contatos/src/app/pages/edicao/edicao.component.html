@@ -1,0 +1,33 @@
+
+<form [formGroup] = "formGroupPessoa" (submit)="EditarPessoa()">
+  <div class="mb-3">
+    <label for="nome" class="form-label" >Nome</label>
+    <input type="text" class="form-control" id="nome" formControlName='nome' [value]="pessoa.nome">
+  </div>
+
+  <div class="mb-3">
+    <label for="cep" class="form-label" onblur="pesquisacep(this.value);">CEP</label>
+    <input type="text" class="form-control" id="cep" formControlName='cep' [value]="pessoa.cep"  >
+  </div>
+  <div class="mb-3">
+    <label for="endereco" class="form-label">Endereço</label>
+    <input type="text" class="form-control" id="bairro" formControlName='endereco' [value]="pessoa.endereco">
+  </div>
+  <div class="mb-3">
+    <label for="cidade" class="form-label">cidade</label>
+
+    <input name="cidade" type="text" id="cidade"  size="60" formControlName='cidade' class="form-control" [value]="pessoa.cidade">
+  </div>
+
+
+  <div class="mb-3">
+    <label for="uf" class="form-label">Estado</label>
+    <input name="uf" type="text" id="uf" size="2 " class="form-control" formControlName='uf' [value]="pessoa.uf">
+  </div>
+
+  <button type="submit" class="btn btn-primary"
+  [disabled]=!formGroupPessoa.valid>{{id ? 'Editar' : 'Cadastrar'}} </button>
+</form>
+
+{{formGroupPessoa.value | json}}
+{{formGroupPessoa.valid}}

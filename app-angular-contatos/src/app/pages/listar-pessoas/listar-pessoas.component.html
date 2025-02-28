@@ -1,0 +1,78 @@
+<div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col" >ID</th>
+        <th scope="col" >Nome</th>
+        <th scope="col" >Endereço</th>
+        <th scope="col" >CEP</th>
+        <th scope="col" >UF</th>
+        <th scope="col" >Contatos</th>
+        <th scope="col" >ATIVO</th>
+        <th scope="col" >EDITAR</th>
+        <th scope="col" >APAGAR</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let pessoa of pessoas" >
+
+      <tr >
+
+  <td scope="row">{{ pessoa.id }}</td>
+  <td scope="row">{{ pessoa.nome }}</td>
+  <td scope="row">{{ pessoa.endereco }}</td>
+  <td scope="row">{{ pessoa.cep }}</td>
+  <td scope="row">{{ pessoa.uf }}</td>
+
+  <td scope="row" >
+
+    <div *ngIf="(condicao(pessoa.id) | async) as resultado">
+      <p *ngIf="resultado.length == 0; else vazio">
+        vazio
+      </p>
+      <ng-template #vazio>
+        <ng-container *ngFor="let contato of resultado">
+          {{ contato.tipoContato }} - {{ contato.contato }}
+        </ng-container>
+      </ng-template>
+    </div>
+  </td>
+  <td scope="row">Não</td>
+  <td scope="row">
+  <button ><a href="http://localhost:4200/editar/{{pessoa.id}}">Editar</a></button>
+</td>
+<td scope="row">
+
+  <!-- Delete Button (Inside Loop) -->
+<button type="button" class="btn btn-danger" data-bs-toggle="modal" [attr.data-bs-target]="'#deleteModal' + pessoa.id">
+  Deletar Pessoa
+</button>
+
+<!-- Modal (Inside Loop, Unique ID per Person) -->
+<div class="modal fade" [id]="'deleteModal' + pessoa.id" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+          <div class="modal-header bg-danger text-white">
+              <h5 class="modal-title">Confirmação</h5>
+              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <p class="mb-0">Tem certeza de que deseja deletar <strong>{{ pessoa.nome }}</strong>? Esta operação não pode ser desfeita.</p>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+              <button type="button" (click)="excluirPessoa(pessoa)" class="btn btn-danger">Deletar</button>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+  </td>
+
+
+</tr>
+    </tbody>
+  </table>
+
+</div>
+
