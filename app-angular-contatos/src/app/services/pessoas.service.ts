@@ -37,7 +37,7 @@ export class PessoasService {
       catchError((error: HttpErrorResponse) => {
         if (error.status === 404) {
           console.error(`Erro 404: Contato não encontrado para ID `);
-          return of([]); // Retorna array vazio no caso de erro 404
+          return of([]); 
         }
         return throwError(() => new Error('Erro desconhecido ao buscar contatos.'));
       })

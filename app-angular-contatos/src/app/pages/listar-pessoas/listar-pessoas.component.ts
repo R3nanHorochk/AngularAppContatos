@@ -10,7 +10,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { Observable } from 'rxjs';
 import { isEmpty } from 'rxjs/operators';
 import { of } from 'rxjs';
-
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-listar-pessoas',
@@ -83,11 +83,17 @@ export class ListarPessoasComponent {
         this.PessoasService.deletarContato(contato.id).subscribe();
       }
     });
-    this.PessoasService.deletarPessoa(pessoa.id).subscribe();
+    this.PessoasService.deletarPessoa(pessoa.id).subscribe(
+      
+    );
+    Swal.fire({
+      icon: 'success',
+      title: 'Pessoa Deletada com sucesso',
+      showConfirmButton: false,
+      timer: 1500
+    });setTimeout(() => {
+      window.location.reload();
+    }, 2000);
 
-}/*
-if (contato.pessoa[0].id == pessoa.id) {
-  this.PessoasService.deletarContato(contato.id).subscribe();
 }
-  this.PessoasService.deletarPessoa(pessoa.id).subscribe();*/
 }

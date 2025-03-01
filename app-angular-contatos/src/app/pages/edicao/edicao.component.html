@@ -9,9 +9,12 @@
     <label for="cep" class="form-label" onblur="pesquisacep(this.value);">CEP</label>
     <input type="text" class="form-control" id="cep" formControlName='cep' [value]="pessoa.cep"  >
   </div>
-  <div class="mb-3">
-    <label for="endereco" class="form-label">Endereço</label>
-    <input type="text" class="form-control" id="bairro" formControlName='endereco' [value]="pessoa.endereco">
+  <div class="input-group mb-3">
+    
+    <br>
+    <input type="text" class="form-control" id="rua" placeholder="Rua" [value]="rua" (input)="AtualizarRua($event)"/>
+      <span class="input-group-addon">-</span>
+      <input type="text" class="form-control" id="bairro" placeholder="Bairro" [value]="bairro" (input)="AtualizarBairro($event)"/>
   </div>
   <div class="mb-3">
     <label for="cidade" class="form-label">cidade</label>

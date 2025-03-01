@@ -5,20 +5,19 @@
     <input type="text" class="form-control" id="nome" formControlName='nome'>
   </div>
   <div class="mb-3">
-    <label for="endereco" class="form-label">Endereço</label>
-    <input type="text" class="form-control" id="" formControlName='endereco'>
-  </div>
+    <label for="nome" class="form-label" >ENDERECO</label>
+  
+</div>
   <div class="mb-3">
     <label for="cep" class="form-label" onblur="pesquisacep(this.value);">CEP</label>
     <input type="text" class="form-control" id="cep" formControlName='cep'>
   </div>
-  <div class="mb-3">
-    <label for="rua" class="form-label">Rua</label>
-    <input name="rua" type="text" id="rua" size="60" class="form-control" formControlName='endereco' >
-  </div>
-  <div class="mb-3">
-    <label for="bairro" class="form-label">bairro</label>
-    <input name="bairro" type="text" id="bairro" size="40" class="form-control" formControlName='endereco'>
+  <div class="input-group mb-3">
+    
+    <br>
+    <input type="text" class="form-control" id="rua" placeholder="Rua" [value]="rua" (input)="AtualizarRua($event)"/>
+      <span class="input-group-addon">-</span>
+      <input type="text" class="form-control" id="bairro" placeholder="Bairro" [value]="bairro" (input)="AtualizarBairro($event)"/>
   </div>
   <div class="mb-3">
     <label for="cidade" class="form-label">cidade</label>
@@ -28,15 +27,13 @@
     <label for="uf" class="form-label">Estado</label>
     <input name="uf" type="text" id="uf" size="2 " class="form-control" formControlName='uf'>
   </div>
-  <div class="mb-3">
-    <label for="endereco" class="form-label">Endereço (Rua + Bairro)</label>
-    <input type="text" class="form-control" id="endereco" formControlName="endereco" >
-  </div>
-
+  
   <button type="submit" class="btn btn-primary"
-  [disabled]=!formGroupPessoa.valid>{{id ? 'Editar' : 'Cadastrar'}} </button>
+  [disabled]=!formGroupPessoa.valid>Cadastrar </button>
 
-
+  {{ formGroupPessoa.value | json }}
+  {{ formGroupPessoa.valid }}
 </form>
+
 
 

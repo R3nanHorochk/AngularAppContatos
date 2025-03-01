@@ -4,6 +4,7 @@ import { ListarPessoasComponent } from './pages/listar-pessoas/listar-pessoas.co
 import { CadastroEdicaoComponent } from './pages/cadastro-edicao/cadastro-edicao.component';
 import { EdicaoComponent } from './pages/edicao/edicao.component';
 import { InicialComponent } from './components/inicial/inicial.component';
+import { InfoComponent } from './components/info/info.component';
 
 const routes: Routes = [{
   path: 'pessoas',component: ListarPessoasComponent
@@ -14,6 +15,8 @@ const routes: Routes = [{
   path: 'editar/:id',component:EdicaoComponent
 },{
   path: '',component: InicialComponent
+},{
+  path: 'info',component: InfoComponent
 }];
 
 @NgModule({

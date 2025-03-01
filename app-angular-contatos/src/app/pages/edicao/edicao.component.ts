@@ -14,6 +14,9 @@ import Swal from 'sweetalert2';
 })
 export class EdicaoComponent {
   id: number = 0;
+  rua: string = ''; 
+  bairro: string = '';
+  endereco2: string ='';
   formGroupPessoa: FormGroup = new FormGroup({
    id : new FormControl(Number(this.route.snapshot.params['id']),[Validators.required]),
    nome: new FormControl('',[Validators.required]),
@@ -39,12 +42,29 @@ export class EdicaoComponent {
     if (this.id) {
       this.pessoasService.buscarPessoaPorId(this.id).subscribe(response => {
         this.pessoa = response;
-        this.pessoa.endereco =  this.pessoa.rua + ' ' + this.pessoa.bairro;
       })
     }
 
 }
+AtualizarBairro(event: any){
+  this.bairro = event.target.value as string;
+  this.concatenarEndereco();
+}
+AtualizarRua(event: any) {
+  
+  this.rua = event.target.value as string;
+  this.concatenarEndereco();  
+}
 
+concatenarEndereco() {
+  
+  this.endereco2 = `${this.rua} - ${this.bairro}`;
+  
+  
+  this.formGroupPessoa.patchValue({
+    endereco: this.endereco2
+  });
+}
 EditarPessoa(){
 
   const pessoa : IPessoa = this.formGroupPessoa.value;
