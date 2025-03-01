@@ -4,14 +4,14 @@
     <label for="nome" class="form-label" >Nome</label>
     <input type="text" class="form-control" id="nome" formControlName='nome'>
   </div>
-  <div class="mb-3">
-    <label for="nome" class="form-label" >ENDERECO</label>
   
-</div>
   <div class="mb-3">
     <label for="cep" class="form-label" onblur="pesquisacep(this.value);">CEP</label>
     <input type="text" class="form-control" id="cep" formControlName='cep'>
   </div>
+  
+  <div class="mb-3">
+    <label for="nome" class="form-label" >ENDERECO</label>
   <div class="input-group mb-3">
     
     <br>
@@ -19,6 +19,7 @@
       <span class="input-group-addon">-</span>
       <input type="text" class="form-control" id="bairro" placeholder="Bairro" [value]="bairro" (input)="AtualizarBairro($event)"/>
   </div>
+</div>
   <div class="mb-3">
     <label for="cidade" class="form-label">cidade</label>
     <input name="cidade" type="text" id="cidade" size="40" class="form-control" formControlName='cidade'>

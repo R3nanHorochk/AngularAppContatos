@@ -12,9 +12,9 @@
   <div class="input-group mb-3">
     
     <br>
-    <input type="text" class="form-control" id="rua" placeholder="Rua" [value]="rua" (input)="AtualizarRua($event)"/>
+    <input type="text" class="form-control" id="rua"  placeholder="Rua" [value]="pessoa.rua" (input)="AtualizarRua($event)"/>
       <span class="input-group-addon">-</span>
-      <input type="text" class="form-control" id="bairro" placeholder="Bairro" [value]="bairro" (input)="AtualizarBairro($event)"/>
+      <input type="text" class="form-control" id="bairro" placeholder="Bairro" [value]="pessoa.bairro" (input)="AtualizarBairro($event)"/>
   </div>
   <div class="mb-3">
     <label for="cidade" class="form-label">cidade</label>
@@ -29,8 +29,5 @@
   </div>
 
   <button type="submit" class="btn btn-primary"
-  [disabled]=!formGroupPessoa.valid>{{id ? 'Editar' : 'Cadastrar'}} </button>
+  [disabled]=!formGroupPessoa.valid>Editar </button>
 </form>
-
-{{formGroupPessoa.value | json}}
-{{formGroupPessoa.valid}}
