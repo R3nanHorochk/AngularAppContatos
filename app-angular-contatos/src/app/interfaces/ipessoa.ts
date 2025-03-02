@@ -8,4 +8,5 @@ export interface IPessoa {
   cidade: string;
   uf: string;
   ativo: boolean;
+  num:number;
 }

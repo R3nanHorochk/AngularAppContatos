@@ -13,9 +13,11 @@
     
     <br>
     <input type="text" class="form-control" id="rua"  placeholder="Rua" [value]="pessoa.rua" (input)="AtualizarRua($event)"/>
-      <span class="input-group-addon">-</span>
+    <span class="input-group-addon">-</span>
+    <input type="number" class="form-control" id="num" placeholder="Numero" [value]="pessoa.num" (input)="AtualizarN($event)"/>
+    <span class="input-group-addon">-</span>
       <input type="text" class="form-control" id="bairro" placeholder="Bairro" [value]="pessoa.bairro" (input)="AtualizarBairro($event)"/>
-  </div>
+      </div>
   <div class="mb-3">
     <label for="cidade" class="form-label">cidade</label>
 

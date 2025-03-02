@@ -32,13 +32,14 @@
       <ng-template #vazio>
         <ng-container *ngFor="let contato of resultado">
           {{ contato.tipoContato }} - {{ contato.contato }}
+          
         </ng-container>
       </ng-template>
     </div>
   </td>
   <td scope="row">Não</td>
   <td scope="row">
-  <button ><a href="http://localhost:4200/editar/{{pessoa.id}}">Editar</a></button>
+  <button class="btn btn-primary" ><a href="http://localhost:4200/editar/{{pessoa.id}}" style="text-decoration: none; color: white;">Editar</a></button>
 </td>
 <td scope="row">
 
@@ -47,7 +48,7 @@
   Deletar Pessoa
 </button>
 
-<!-- Modal (Inside Loop, Unique ID per Person) -->
+
 <div class="modal fade" [id]="'deleteModal' + pessoa.id" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">

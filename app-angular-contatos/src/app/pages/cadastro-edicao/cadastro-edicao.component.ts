@@ -15,6 +15,7 @@ export class CadastroEdicaoComponent {
   rua: string = ''; 
   bairro: string = '';
   endereco2: string ='';
+  num: number = 0;
   formGroupPessoa: FormGroup = new FormGroup({
    nome: new FormControl('',[Validators.required]),
    endereco: new FormControl('', [Validators.required]),
@@ -37,10 +38,14 @@ AtualizarRua(event: any) {
   this.rua = event.target.value as string;
   this.concatenarEndereco();  
 }
-
+AtualizarN(event: any) {
+  
+  this.num = event.target.value as number;
+  this.concatenarEndereco();  
+}
 concatenarEndereco() {
   
-  this.endereco2 = `${this.rua} - ${this.bairro}`;
+  this.endereco2 = `${this.rua} - ${this.num} - ${this.bairro} `;
   
   
   this.formGroupPessoa.patchValue({

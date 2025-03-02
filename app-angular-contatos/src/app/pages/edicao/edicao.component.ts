@@ -15,7 +15,7 @@ import Swal from 'sweetalert2';
 export class EdicaoComponent {
   id: number = 0;
   rua: string = ''; 
-  
+  num: number = 0;
   bairro: string = '';
   endereco2: string ='';
   formGroupPessoa: FormGroup = new FormGroup({
@@ -36,18 +36,20 @@ export class EdicaoComponent {
     uf: '',
     ativo: false,
     rua: '',
-    bairro: ''
+    bairro: '',
+    num: 0
   } ;
   ngOnInit(): void {
-    let ender :string[] = ['',''];
+    let ender :any[] = ['','',0];
     this.id = Number(this.route.snapshot.params['id']);
     if (this.id) {
       this.pessoasService.buscarPessoaPorId(this.id).subscribe(response => {
         
         ender = response.endereco.split(' - ');
         this.pessoa = response;
-        this.pessoa.bairro = ender[1];
+        this.pessoa.bairro = ender[2];
         this.pessoa.rua = ender[0];
+        this.pessoa.num = ender[1];
       })
     }
     
@@ -61,10 +63,14 @@ AtualizarRua(event: any) {
   this.rua = event.target.value as string;
   this.concatenarEndereco();  
 }
-
+AtualizarN(event: any) {
+  
+  this.num = event.target.value as number;
+  this.concatenarEndereco();  
+}
 concatenarEndereco() {
   
-  this.endereco2 = `${this.rua} - ${this.bairro}`;
+  this.endereco2 = `${this.rua} - ${this.num} - ${this.bairro} `;
   
   
   this.formGroupPessoa.patchValue({
