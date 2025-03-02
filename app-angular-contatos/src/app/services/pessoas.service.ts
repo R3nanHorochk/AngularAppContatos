@@ -26,22 +26,22 @@ export class PessoasService {
   url3 = environment.url3;
   url = environment.url;
   buscarPessoas(){
-    return  this.http.get<IPessoa[]>(`${this.url}`);
+    return  this.http.get<IPessoa[]>(`${this.url}`).pipe(
+      catchError((error: HttpErrorResponse) => {
+        if (error.status === 404) {
+          console.error(`Erro 404: Pessoas não encontradas `);
+          return of([]); 
+        }
+        return throwError(() => new Error('Erro desconhecido ao buscar pessoas.'));
+      })
+    );
   }
 
   buscarPessoaPorId(id: number) {
-    return this.http.get<IPessoa>(`${this.url}/${id}`)
+    return this.http.get<IPessoa>(`${this.url}/${id}`);
   }
   buscarContatoPorIdPessoa(id: number) {
-    return this.http.get<IContats[]>(`${this.url2}/${id}`).pipe(
-      catchError((error: HttpErrorResponse) => {
-        if (error.status === 404) {
-          console.error(`Erro 404: Contato não encontrado para ID `);
-          return of([]); 
-        }
-        return throwError(() => new Error('Erro desconhecido ao buscar contatos.'));
-      })
-    );
+    return this.http.get<IContats[]>(`${this.url2}/${id}`);
   }
 
   cadastrarPessoa(pessoa : IPessoa){
@@ -63,7 +63,6 @@ export class PessoasService {
       catchError((error: HttpErrorResponse) => {
         if (error.status === 404) {
           console.error(`Erro 404: Contato não encontrado para ID `);
-          return of([]); // Retorna array vazio no caso de erro 404
         }
         return throwError(() => new Error('Erro desconhecido ao buscar contatos.'));
       })
@@ -78,6 +77,16 @@ export class PessoasService {
     );
   }
 
+  cadastrarContato(contato: IContats) {
+    return this.http.post<IContats>(`${this.url3}`,contato);
+  }
 
+  atualizarContato (id: number,contato: IContats){
+    return this.http.put<IContats>(`${this.url3}/${id}`, contato);
+  }
+
+  BuscaContatoId (id: number){
+    return this.http.get<IContats>(`${this.url3}/${id}`);
+  }
 
 }

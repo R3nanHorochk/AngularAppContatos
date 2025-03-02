@@ -15,6 +15,8 @@ import { FiltroContatoPipe } from './pipes/filtro-contato.pipe';
 import { InicialComponent } from './components/inicial/inicial.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { InfoComponent } from './components/info/info.component';
+import { CadastroContatoComponent } from './pages/cadastro-contato/cadastro-contato.component';
+import { EditarContatoComponent } from './pages/editar-contato/editar-contato.component';
 
 
 @NgModule({
@@ -27,7 +29,9 @@ import { InfoComponent } from './components/info/info.component';
     FiltroContatoPipe,
     InicialComponent,
     FooterComponent,
-    InfoComponent
+    InfoComponent,
+    CadastroContatoComponent,
+    EditarContatoComponent
   ],
   imports: [
     BrowserModule,

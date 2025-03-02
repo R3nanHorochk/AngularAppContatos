@@ -39,6 +39,7 @@ export class EdicaoComponent {
     bairro: '',
     num: 0
   } ;
+  
   ngOnInit(): void {
     let ender :any[] = ['','',0];
     this.id = Number(this.route.snapshot.params['id']);
@@ -65,7 +66,7 @@ AtualizarRua(event: any) {
 }
 AtualizarN(event: any) {
   
-  this.num = event.target.value as number;
+  this.num = event.target.value as number; // pega valor do input
   this.concatenarEndereco();  
 }
 concatenarEndereco() {

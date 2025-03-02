@@ -1,0 +1,32 @@
+
+<form [formGroup] = "formGroupContato" (submit)="EditarContato()">
+    <div class="mb-3">
+      <label for="tipoContato" class="form-label">Tipo de contato</label>
+      <select id="tipoContato" name="Tipo de Contato" formControlName='tipoContato' [value]="contato.tipoContato">
+        <option value=0>Telefone</option>
+        <option value=1>E-mail</option>
+        <option value=2>Discord</option>
+        <option value=3>Teams</option>
+        <option value=4>Instagram</option>
+      </select>
+    </div>
+    
+    <div class="mb-3">
+      <label for="contato" class="form-label"  >Contato</label>
+      <input type="text" class="form-control" id="contato" formControlName='contato' [value]="contato.contato">
+    </div>
+    
+    <div class="mb-3" formGroupName="pessoa">
+      <label for="idPessoa" class="form-label" >Id da Pessoa</label>
+      <input type="number" class="form-control" id="idPessoa" [value]="contato.pessoa.id" onblur="" formControlName='id' onblur="">
+    </div>
+      
+    <button type="submit" class="btn btn-primary"
+    [disabled]=!formGroupContato.valid>Cadastrar </button>
+  
+    
+  </form>
+  
+  
+  
+  
