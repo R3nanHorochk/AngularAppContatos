@@ -23,9 +23,16 @@
       
     <button type="submit" class="btn btn-primary"
     [disabled]=!formGroupContato.valid>Cadastrar </button>
+    <span>‎ ‎ </span>
+    <button type="button" class="btn btn-danger" (click)="excluirContato(contato.id)" data-bs-toggle="modal" [attr.data-bs-target]="'#deleteModal' + contato.id">
+      Deletar Contato
+    </button>
+    
+    
   
     
   </form>
+  
   
   
   

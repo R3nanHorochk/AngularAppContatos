@@ -88,5 +88,8 @@ export class PessoasService {
   BuscaContatoId (id: number){
     return this.http.get<IContats>(`${this.url3}/${id}`);
   }
-
+  
+  deletaContatoId (id: number){
+    return this.http.delete<IContats>(`${this.url3}/${id}`);
+  }
 }

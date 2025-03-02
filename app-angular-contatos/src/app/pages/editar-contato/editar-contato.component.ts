@@ -82,6 +82,23 @@ export class EditarContatoComponent {
           console.log(pessoas)
         });
       }
+
+      excluirContato(id: number){
+        this.pessoasService.deletaContatoId(id).subscribe();
+        Swal.fire({
+              icon: 'success',
+              title: 'Contato Deletada com sucesso',
+              showConfirmButton: false,
+              timer: 1500
+            });
+            setTimeout(() => {
+              
+              this.router.navigate(['/pessoas']);
+            }, 2000);
+            
+            
+
+      }
 }
 
 
